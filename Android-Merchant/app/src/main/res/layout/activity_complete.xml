@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~    ****************************************************************************
+  ~    Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~    affiliates. All rights reserved.
+  ~    <p/>
+  ~    The contents of this file may only be used subject to the MasterCard
+  ~    Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~    Materials License.
+  ~    <p/>
+  ~    Please refer to the file LICENSE.TXT for full details.
+  ~    <p/>
+  ~    TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~    WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~    WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~    NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~    MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~    IN THE SOFTWARE.
+  ~    *****************************************************************************
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scrollview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.mastercard.masterpass_rakuten.activity.CompleteActivity">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lay_shipping_address">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@android:id/list"
+                android:background="@color/header_bg"
+                android:gravity="center_horizontal"
+                android:padding="8dp"
+                android:text="@string/txt_shipping_address"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="@color/header" />
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/textView"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/complete_item_container">
+
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete_lbl_recipient_name"
+                        android:id="@+id/textView2"
+                        style="@style/complete_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_recipient_name"
+                        style="@style/complete_text"
+                        android:text="John Dee" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/complete_item_container">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete_lbl_address_line1"
+                        android:id="@+id/textView3"
+                        style="@style/complete_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_address_line1"
+                        style="@style/complete_text"
+                        android:text="114 5th Ave, FL 10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/complete_item_container">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete_lbl_postal_code"
+                        android:id="@+id/textView4"
+                        style="@style/complete_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_postal_code"
+                        style="@style/complete_text"
+                        android:text="10011" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/complete_item_container">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete_lbl_city"
+                        android:id="@+id/textView5"
+                        style="@style/complete_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_city"
+                        style="@style/complete_text"
+                        android:text="New York" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/complete_item_container">
+                    <TextView
+                        android:layout_height="wrap_content"
+                        android:text="@string/complete_lbl_state"
+                        android:id="@+id/textView6"
+                        style="@style/complete_label" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_state"
+                        style="@style/complete_text"
+                        android:text="WA" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/lay_summary"
+            android:layout_below="@+id/lay_shipping_address">
+
+            <include
+                layout="@layout/partial_basket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <!-- MasterPass logo -->
+        <ImageView
+            android:id="@+id/img_masterpass_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:src="@drawable/masterpass_logo_small"
+            android:layout_below="@+id/lay_summary" />
+
+        <!-- Order number label -->
+        <TextView
+            android:id="@+id/lbl_order_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/img_masterpass_logo"
+            android:layout_alignBottom="@id/img_masterpass_logo"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/lbl_order_no" />
+
+        <!-- Order number -->
+        <TextView
+            android:id="@+id/txt_order_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/lbl_order_no"
+            android:layout_marginLeft="3dp"
+            android:layout_alignBottom="@id/lbl_order_no"
+            android:text="@string/placeholder_order_no"/>
+
+        <!-- Continue shopping button -->
+        <Button
+            android:id="@+id/btn_continue_shopping"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/img_masterpass_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="@string/btn_continue_shopping"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Checkout XML"
+            android:id="@+id/sw_debug"
+            android:layout_below="@+id/btn_continue_shopping"
+            android:layout_alignParentRight="true"
+            android:textSize="12dp" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/horizontalScrollView"
+            android:layout_below="@+id/sw_debug"
+            android:layout_margin="3dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_debug"
+                android:layout_below="@+id/sw_debug"
+                android:singleLine="false"
+                android:scrollHorizontally="true"
+                android:scrollbars="horizontal"
+                android:visibility="gone"
+                android:textSize="12dp"/>
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+</ScrollView>

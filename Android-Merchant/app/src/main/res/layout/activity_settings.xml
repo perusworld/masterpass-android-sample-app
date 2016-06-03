@@ -1,0 +1,189 @@
+<!--
+  ~    ****************************************************************************
+  ~    Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~    affiliates. All rights reserved.
+  ~    <p/>
+  ~    The contents of this file may only be used subject to the MasterCard
+  ~    Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~    Materials License.
+  ~    <p/>
+  ~    Please refer to the file LICENSE.TXT for full details.
+  ~    <p/>
+  ~    TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~    WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~    WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~    NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~    MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~    IN THE SOFTWARE.
+  ~    *****************************************************************************
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mastercard.masterpass.merchantapp.activity.ManageAddressesActivity">
+
+    <LinearLayout
+        android:id="@+id/settings_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <!-- Default Address -->
+        <RelativeLayout
+            android:id="@+id/default_address_layout_outer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/default_address_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subHeader"
+                android:text="@string/settings_default_address"/>
+
+            <LinearLayout
+                android:id="@+id/default_address_layout_inner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/default_address_label"
+                android:layout_toStartOf="@+id/btn_manage_addresses"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/default_address_line1"
+                    style="@style/settings_address_text"/>
+
+                <TextView
+                    android:id="@+id/default_address_line2"
+                    style="@style/settings_address_text"/>
+
+                <TextView
+                    android:id="@+id/default_address_city"
+                    style="@style/settings_address_text"/>
+
+                <TextView
+                    android:id="@+id/default_address_state"
+                    style="@style/settings_address_text"/>
+
+                <TextView
+                    android:id="@+id/default_address_postcode"
+                    style="@style/settings_address_text"/>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_manage_addresses"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:textColor="@android:color/white"
+                android:background="@drawable/button"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/settings_manage_addresses"/>
+
+        </RelativeLayout>
+
+        <View style="@style/divider_horizontal"/>
+
+        <!-- Currency types -->
+        <RelativeLayout
+            android:id="@+id/currency_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/currency_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subHeader"
+                android:text="@string/settings_currency"/>
+
+            <Spinner
+                android:id="@+id/currency_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/currency_label"/>
+
+        </RelativeLayout>
+
+        <View style="@style/divider_horizontal"/>
+
+        <!-- Locale -->
+        <RelativeLayout
+            android:id="@+id/locale_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/locale_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subHeader"
+                android:text="@string/settings_locale"/>
+
+            <Spinner
+                android:id="@+id/locale_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/locale_label"/>
+
+        </RelativeLayout>
+
+        <View style="@style/divider_horizontal"
+            android:visibility="visible" />
+
+        <!-- Cryptogram types -->
+        <RelativeLayout
+            android:id="@+id/cryptogram_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/cryptogram_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subHeader"
+                android:text="@string/settings_cryptogram_type"/>
+
+            <Spinner
+                android:id="@+id/cryptogram_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cryptogram_label"/>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/save_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ok"
+            android:visibility="gone"
+            android:padding="20dp"
+            android:textColor="@android:color/white"
+            android:background="@drawable/button"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

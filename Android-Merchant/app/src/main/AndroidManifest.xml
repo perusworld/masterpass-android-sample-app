@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  ****************************************************************************
+  ~  Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~  affiliates. All rights reserved.
+  ~  <p/>
+  ~  The contents of this file may only be used subject to the MasterCard
+  ~  Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~  Materials License.
+  ~  <p/>
+  ~  Please refer to the file LICENSE.TXT for full details.
+  ~  <p/>
+  ~  TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~  WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~  NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~  MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~  IN THE SOFTWARE.
+  ~  *****************************************************************************
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mastercard.mymerchant">
+
+    <application
+        android:name=".MyMerchantApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.mastercard.mymerchant.activity.StartActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.mastercard.mymerchant.activity.ProductsActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mastercard.mymerchant.activity.CheckoutActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask">
+
+            <!-- MCO SDK Browser Checkout Functionality, After completing Web process. It will then return to checkout activity with some data -->
+            <intent-filter>
+                <data android:scheme="merchant" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mastercard.mymerchant.activity.CompleteActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
+        <activity
+            android:name="com.mastercard.mymerchant.activity.SettingsActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mastercard.mymerchant.activity.ManageShippingAddressesActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mastercard.mymerchant.activity.ModifyShippingAddressActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.mastercard.mymerchant.activity.ExitActivity"
+            android:label="@string/app_label"
+            android:screenOrientation="portrait" />
+
+        <meta-data android:name="AA_MODELS" android:value="com.mastercard.mymerchant.model.DbAddressModel" />
+    </application>
+
+</manifest>

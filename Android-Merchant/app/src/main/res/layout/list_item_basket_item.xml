@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~    ****************************************************************************
+  ~    Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~    affiliates. All rights reserved.
+  ~    <p/>
+  ~    The contents of this file may only be used subject to the MasterCard
+  ~    Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~    Materials License.
+  ~    <p/>
+  ~    Please refer to the file LICENSE.TXT for full details.
+  ~    <p/>
+  ~    TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~    WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~    WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~    NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~    MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~    IN THE SOFTWARE.
+  ~    *****************************************************************************
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp">
+
+    <!-- Image for the product -->
+    <ImageView
+        android:id="@+id/img_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:src="@drawable/product_samsung_galaxy_s6" />
+
+    <!-- Name of the product -->
+    <TextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/img_image"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/placeholder_product_name"
+        android:textStyle="bold"/>
+
+    <!-- Price of the product -->
+    <TextView
+        android:id="@+id/txt_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/img_image"
+        android:layout_below="@id/txt_name"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/placeholder_product_price"
+        android:textColor="@color/sub_header"/>
+
+    <!-- Quantity -->
+    <TextView
+        android:id="@+id/txt_quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/txt_price"
+        android:layout_alignParentRight="true"
+        android:text="@string/placeholder_quantity"/>
+
+    <!-- Quantity label -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/txt_quantity"
+        android:layout_toLeftOf="@id/txt_quantity"
+        android:layout_marginRight="3dp"
+        android:text="@string/lbl_quantity" />
+
+    <!-- Remove -->
+    <TextView
+        android:id="@+id/txt_remove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_price"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="10dp"
+        android:gravity="bottom"
+        android:text="@string/btn_remove"
+        android:textAllCaps="true" />
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+apply plugin: 'com.android.application'
+
+def version = 'v1.2.5'
+def deployName = 'My_Merchant_' + version
+
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "22.0.1"
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            output.outputFile = new File(output.outputFile.parentFile,
+                    output.outputFile.name.replace(".apk", "-${variant.versionName}.apk"));
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.mastercard.merchant"
+        minSdkVersion 21
+        targetSdkVersion 22
+        versionCode 123
+        versionName version
+
+        buildConfigField "int", "GSON_REQUEST_TIMEOUT", "10000"
+        buildConfigField "int", "GSON_REQUEST_RETRIES", "3"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            testCoverageEnabled = true
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs = ['src/main/java']
+        live{
+            java.srcDirs = ['src/live/java']
+        }
+    }
+    
+    productFlavors {
+        live{
+            applicationId 'com.mastercard.mymerchant.live'
+            versionName version+'-live'
+            //buildConfigField "String", "MERCHANT_SERVER_URL", "\"http://<host>:<port>/Test-Merchant-Server-1.2/\""
+            buildConfigField "String", "MERCHANT_SERVER_URL", "\"http://66.160.128.169:8080/tms/\""
+            buildConfigField "String", "APP_ID_FOR_SWITCH", "\"b08902f1-4e80-433c-b66f-61a71d646379\"" //sandbox
+        }
+    }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+repositories {
+    flatDir{
+        dirs 'libs'
+    }
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    liveCompile(name: 'masterpass-core-release-1.2.0.4', ext: 'aar')
+    liveCompile(name: 'masterpass-merchant-release-1.2.0.4', ext: 'aar')
+    liveCompile(name: 'mobile-checkout-core-lib-release-1.2.0.4', ext: 'aar')
+    liveCompile(name: 'mobile-checkout-merchant-lib-release-1.2.0.4', ext: 'aar')
+
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.google.code.gson:gson:2.3'
+    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.3'
+    compile 'com.googlecode.androidannotations:androidannotations-api:2.7.1'
+    compile 'com.android.support:support-v13:23.0.0'
+    compile 'com.android.support:recyclerview-v7:23.0.0'
+    compile 'com.android.support:design:23.0.0'
+    compile 'com.android.support:appcompat-v7:23.0.0'
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "org.mockito:mockito-core:1.9.5"
+    testCompile 'org.easymock:easymock:3.1'
+    testCompile 'org.jmockit:jmockit:1.8'
+
+    testCompile ('org.powermock:powermock-api-mockito:1.6.2') {
+        exclude module: 'hamcrest-core'
+        exclude module: 'objenesis'
+    }
+    testCompile ('org.powermock:powermock-module-junit4:1.6.2') {
+        exclude module: 'hamcrest-core'
+        exclude module: 'objenesis'
+    }
+}

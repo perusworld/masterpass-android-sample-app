@@ -1,0 +1,22 @@
+<html>
+<body>
+</body>
+<script type="text/javascript">
+var INTENT_URL = 'merchant://view';
+function get_query_param(name){
+	var rows = window.location.search.substr(1).split('&')
+	var val = null;
+	for (var i = 0; i < rows.length; i++) {
+		 if(rows[i] == "") return;
+		  var parts = rows[i].split('=');
+		  if(parts.length == 2 && parts[0] == name){
+			val = decodeURIComponent(parts[1].replace(/\+/g, " "))
+		  }	
+	};
+	return val;
+}
+if(get_query_param('mpstatus') == 'success'){
+	window.location = INTENT_URL + window.location.search;
+}
+</script>
+</html>

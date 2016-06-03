@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  ****************************************************************************
+  ~  Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~  affiliates. All rights reserved.
+  ~  <p/>
+  ~  The contents of this file may only be used subject to the MasterCard
+  ~  Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~  Materials License.
+  ~  <p/>
+  ~  Please refer to the file LICENSE.TXT for full details.
+  ~  <p/>
+  ~  TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~  WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~  NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~  MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~  IN THE SOFTWARE.
+  ~  *****************************************************************************
+  -->
+
+<resources>
+    <color name="color_text_grey">#717172</color>
+    <color name="label_color">#000000</color>
+    <color name="sub_header">#A05703</color>
+    <color name="action_bar_text">#BB6019</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="dark_grey">#444444</color>
+    <color name="header">#453132</color>
+    <color name="header_bg">#E1DCDC</color>
+    <color name="red">#ff0000</color>
+</resources>

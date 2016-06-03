@@ -1,0 +1,52 @@
+<html>
+<head>
+<!--urltosandboxmasterpasslightbox-->
+<script type="text/javascript"src="https://sandbox.masterpass.com/lightbox/Switch/integration/MasterPass.client.js"></script>
+
+<!--urltoproductionmasterpasslightbox-->
+<!--<script type="text/javascript"src="https://masterpass.com/lightbox/Switch/integra" />-->
+
+<!--urltojquery1.10.2-->
+<script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+<p class="message"></p>
+<script type="text/javascript" language="Javascript">
+
+        var baseURL = 'http://localhost:8080/Test-Merchant-Server-1.2';
+        
+        jQuery(document).ready(function($){
+        	
+        	var callbackUrl = baseURL+"/callback.html",
+        	requestTokenUrl = baseURL+"/requestToken";
+        	
+        	function initializeClient(token){
+        		MasterPass.client.checkout({
+                    "requestToken":token,        
+                    "callbackUrl": callbackUrl,
+                    "merchantCheckoutId":"a4a6x55d84skcijd37ojo1ikflwqy2ju6l",
+                    "allowedCardTypes":["master,amex,diners,discover,maestro,visa"],
+                    "version":"v6"
+                });	
+        	}
+        	
+        	$('body .message').text('Initializing...');
+        	
+        	$.post(requestTokenUrl)
+        	.done(function(data, textStatus, jqXHR){
+        		$('body .message').text('Redirecting..');
+        		if(data.requestToken != undefined){
+        			initializeClient(data.requestToken);
+        		}
+        	})
+        	.fail(function(jqXHR, textStatus, errorThrown){
+        		// error handling here
+        		$('body .message').text('Something went wrong, Redirecting...');
+        		window.location = callbackUrl+'?errorCode='+jqXHR.status;
+        	});
+        });
+        
+        </script>
+</body>
+</html>

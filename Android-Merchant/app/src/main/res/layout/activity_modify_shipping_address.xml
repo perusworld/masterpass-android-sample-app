@@ -1,0 +1,281 @@
+<!--
+  ~    ****************************************************************************
+  ~    Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~    affiliates. All rights reserved.
+  ~    <p/>
+  ~    The contents of this file may only be used subject to the MasterCard
+  ~    Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~    Materials License.
+  ~    <p/>
+  ~    Please refer to the file LICENSE.TXT for full details.
+  ~    <p/>
+  ~    TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~    WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~    WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~    NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~    MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~    IN THE SOFTWARE.
+  ~    *****************************************************************************
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    tools:context="com.mastercard.masterpass.merchantapp.activity.ModifyShippingAddressActivity"
+    android:paddingRight="10dp">
+
+    <RelativeLayout
+        android:id="@+id/add_address_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/add_addresses_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/subHeader"
+            android:text="@string/lbl_address_add"/>
+
+        <TextView
+            android:id="@+id/add_address_default_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@string/lbl_address_set_default"/>
+
+        <Switch
+            android:id="@+id/add_address_default_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@id/add_address_default_label"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/address_buttons_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/address_buttons_divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#999" />
+
+        <LinearLayout
+            android:id="@+id/address_buttons_split_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/address_buttons_divider"
+            android:orientation="horizontal"
+            android:layout_margin="4dp"
+            android:layout_alignParentBottom="true">
+
+            <!-- Cancel -->
+            <TextView
+                android:id="@+id/address_button_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="cancel"
+                android:text="@string/btn_cancel"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_margin="4dp"
+                style="@style/cancelbutton" />
+
+            <!-- Save -->
+            <TextView
+                android:id="@+id/address_button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:onClick="save"
+                android:text="@string/btn_save"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_margin="4dp"
+                style="@style/button" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/address_buttons_layout"
+        android:layout_below="@id/add_address_top_layout">
+
+        <LinearLayout
+            android:id="@+id/address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/address_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/address_name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_recipient_name"/>
+
+                <EditText
+                    android:id="@+id/address_name_value"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address_name_label"
+                    android:nextFocusDown="@+id/address_surname_value"
+                    android:hint="@string/lbl_recipient_name"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/address_lastname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/address_lastname_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_lastname"/>
+
+                <EditText
+                    android:id="@+id/address_lastname_value"
+                    android:inputType="textPersonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address_lastname_label"
+                    android:hint="@string/lbl_lastname"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/address_line1_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/address_line1_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_address_line1"/>
+
+                <EditText
+                    android:id="@+id/address_line1_value"
+                    android:inputType="textPostalAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_address_line1"
+                    android:layout_below="@id/address_line1_label"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/address_line2_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/address_line2_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_address_line2"/>
+
+                <EditText
+                    android:id="@+id/address_line2_value"
+                    android:inputType="textPostalAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_address_line2"
+                    android:layout_below="@id/address_line2_label"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/address_city_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/address_city_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_city"/>
+
+                <EditText
+                    android:id="@+id/address_city_value"
+                    android:inputType="textPostalAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/lbl_city"
+                    android:layout_below="@id/address_city_label"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/address_postcode_layout"
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/address_postcode_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lbl_state"/>
+
+                <LinearLayout
+                    android:id="@+id/address_postcode_split_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/address_postcode_label"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/address_state_value"
+                        android:inputType="textPersonName|textCapCharacters"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:nextFocusDown="@+id/address_postcode_value"
+                        android:hint="@string/lbl_state"/>
+
+                    <EditText
+                        android:id="@+id/address_postcode_value"
+                        android:inputType="textPersonName"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:hint="@string/lbl_postcode"/>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

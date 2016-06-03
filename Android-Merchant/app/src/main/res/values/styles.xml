@@ -1,0 +1,117 @@
+<!--
+  ~  ****************************************************************************
+  ~  Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~  affiliates. All rights reserved.
+  ~  <p/>
+  ~  The contents of this file may only be used subject to the MasterCard
+  ~  Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~  Materials License.
+  ~  <p/>
+  ~  Please refer to the file LICENSE.TXT for full details.
+  ~  <p/>
+  ~  TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~  WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~  NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~  MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~  IN THE SOFTWARE.
+  ~  *****************************************************************************
+  -->
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/actionBar</item>
+        <item name="android:actionOverflowButtonStyle">@style/merchant_overflow</item>
+    </style>
+
+    <style name="AppTheme.NoTitleBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="MCTextInputLayoutTheme.TextAppearance.Error" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="colorControlNormal">@color/red</item>
+    </style>
+
+    <style name="merchant_overflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_menu_moreoverflow_normal_holo_light</item>
+    </style>
+
+    <style name="subHeader" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/sub_header</item>
+    </style>
+
+    <style name="textLabel" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2.5</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/label_color</item>
+    </style>
+
+    <style name="textDisplay" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:text">@string/sample_text</item>
+        <item name="android:textColor">@color/label_color</item>
+    </style>
+
+    <style name="actionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:title">My Merchant</item>
+        <item name="android:titleTextStyle">@style/actionBar.titleTextStyle</item>
+        <item name="android:background">#e6e6e6</item>
+        <item name="android:displayOptions">useLogo|showTitle|showHome</item>
+    </style>
+
+    <style name="actionBar.titleTextStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:textColor">@color/action_bar_text</item>
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="button">
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="cancelbutton">
+        <item name="android:background">@drawable/cancelbutton</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="divider_horizontal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#333</item>
+    </style>
+
+    <style name="settings_address_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="complete_item_container">
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+    </style>
+    <style name="complete_label">
+        <item name="android:layout_width">140dp</item>
+    </style>
+
+    <style name="complete_text">
+        <item name="android:textColor">@color/sub_header</item>
+        <item name="android:paddingLeft">16dp</item>
+    </style>
+</resources>

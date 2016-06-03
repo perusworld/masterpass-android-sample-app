@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  ****************************************************************************
+  ~  Copyright (c) 2015, MasterCard International Incorporated and/or its
+  ~  affiliates. All rights reserved.
+  ~  <p/>
+  ~  The contents of this file may only be used subject to the MasterCard
+  ~  Mobile Payment SDK for MCBP and/or MasterCard Mobile MPP UI SDK
+  ~  Materials License.
+  ~  <p/>
+  ~  Please refer to the file LICENSE.TXT for full details.
+  ~  <p/>
+  ~  TO THE EXTENT PERMITTED BY LAW, THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+  ~  WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
+  ~  WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  ~  NON INFRINGEMENT. TO THE EXTENT PERMITTED BY LAW, IN NO EVENT SHALL
+  ~  MASTERCARD OR ITS AFFILIATES BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  ~  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  ~  IN THE SOFTWARE.
+  ~  *****************************************************************************
+  -->
+
+<resources>
+    <!-- Application name -->
+    <string name="app_name">My Merchant</string>
+    <string name="app_label">My Merchant</string>
+
+    <!-- Generic strings -->
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <string name="or">or</string>
+
+    <!-- Placeholders for dynamic strings -->
+    <string name="placeholder_product_name">Kingston 32 GB Data Traveller</string>
+    <string name="placeholder_product_description">Sleek, practical and attractively designed and not a bad size too</string>
+    <string name="placeholder_product_price">$15.74</string>
+    <string name="placeholder_total">$154.43</string>
+    <string name="placeholder_subtotal">$135.43</string>
+    <string name="placeholder_tax">$13.54</string>
+    <string name="placeholder_quantity">2</string>
+    <string name="placeholder_order_no">Unknown</string>
+    <string name="placeholder_shipping">$5.00</string>
+
+    <!-- Menu strings -->
+    <string name="menu_checkout">Checkout</string>
+    <string name="menu_settings">Settings</string>
+
+    <!-- Button strings -->
+    <string name="btn_sign_in">Sign In</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_register">Register</string>
+    <string name="btn_add_to_cart">Add to cart</string>
+    <string name="btn_checkout">Checkout</string>
+    <string name="btn_remove">Remove</string>
+    <string name="btn_continue_shopping">Continue Shopping</string>
+    <string name="btn_address_add">Add New</string>
+
+    <!-- Labels -->
+    <string name="lbl_remember_me">Remember Me</string>
+    <string name="lbl_total">Total</string>
+    <string name="lbl_subtotal">Subtotal</string>
+    <string name="lbl_tax">Tax</string>
+    <string name="lbl_quantity">Quantity:</string>
+    <string name="lbl_order_no">Order number:</string>
+    <string name="lbl_shipping">Shipping</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="lbl_manage_addresses">Manage Addresses</string>
+    <string name="lbl_address_add">Add New Address</string>
+    <string name="lbl_edit">Edit</string>
+    <string name="lbl_address_edit">Edit Address</string>
+    <string name="lbl_address_delete">Delete</string>
+    <string name="lbl_recipient_name">Name</string>
+    <string name="lbl_lastname">Last Name</string>
+    <string name="lbl_recipient_first_name">First Name</string>
+    <string name="lbl_recipient_last_name">Last Name</string>
+    <string name="lbl_address_line1">Address Line 1</string>
+    <string name="lbl_address_line2">Address Line 2</string>
+    <string name="lbl_city">City</string>
+    <string name="lbl_postcode">Zip Code</string>
+    <string name="lbl_country">Country</string>
+    <string name="lbl_country_code">Code</string>
+    <string name="lbl_state">State</string>
+    <string name="lbl_phone">Phone</string>
+    <string name="lbl_address_set_default">Default</string>
+    <string name="lbl_address_placeholder_alias">Home</string>
+    <string name="lbl_address_placeholder">Placeholder Address</string>
+    <string name="lbl_no_shipping">No shipping required</string>
+    <!-- Form hints -->
+    <string name="hint_email">Email Address</string>
+    <string name="hint_pin">PIN</string>
+
+    <!-- Titles + subtitles -->
+    <string name="txt_sign_in">Sign In</string>
+    <string name="txt_shipping_address">Shipping Address</string>
+    <string name="txt_summary">Summary</string>
+    <string name="txt_cart">My Cart</string>
+    <string name="txt_success">Success</string>
+
+    <!-- Dialog strings -->
+    <string name="dialog_title_empty_basket">Basket Empty</string>
+    <string name="dialog_message_empty_basket">You don\'t have any items in your basket</string>
+
+    <!-- Sample text -->
+    <string name="sample_text">Sample Text</string>
+
+    <!-- Error messages -->
+    <string name="error_email_required">Email address is required</string>
+    <string name="error_pin_required">PIN is required</string>
+    <string name="error_invalid_credentials">Invalid credentials</string>
+    <string name="lbl_discount">Discount</string>
+    <string name="placeholder_discount">- $4.00</string>
+
+    <!-- Settings -->
+    <string name="settings_default_address">Default Address</string>
+    <string name="settings_currency">Currency</string>
+    <string name="settings_locale">Locale</string>
+    <string name="settings_cryptogram_type">Cryptogram Type</string>
+    <string name="settings_manage_addresses">Manage</string>
+
+    <!-- Complete -->
+    <string name="complete_lbl_recipient_name">Recipient Name:</string>
+    <string name="complete_lbl_address_line1">Address:</string>
+    <string name="complete_lbl_postal_code">Postal Code:</string>
+    <string name="complete_lbl_city">City:</string>
+    <string name="complete_lbl_state">State:</string>
+</resources>
