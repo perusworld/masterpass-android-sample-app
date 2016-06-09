@@ -338,3 +338,5 @@ Please download the companion test wallet app to test your integration.
 
 
 #### Web Checkout Fallback
+
+Coming soon
