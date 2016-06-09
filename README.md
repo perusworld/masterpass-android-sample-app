@@ -12,13 +12,17 @@ The tokens should be exchanged with the MasterPass backend to access encrypted p
 
 ### One or more MasterPass-enabled Wallets on user's android phone
 
-
+Coming soon
 
 ### No MasterPass-enabled Wallet on user's android phone
 
-## Integration
+Coming soon
+
+## Integration Tutorial
 
 ### 1. Set up your backend to communicate with MasterPass
+
+Coming soon
 
 ### 2. Add the Android Checkout SDK to your application
 
@@ -324,4 +328,13 @@ DecryptionListener masterPassDecryptionListener = new DecryptionListener() {
 ### 6. Testing
 
 #### In-App Checkout
+
+Please download the companion test wallet app to test your integration.
+
+1. Install the companion Test Wallet Apps on an Android device.
+2. Launch the companion Test Wallet Apps once to initialize it.
+3.  Install your app and launch it to initialize the Merchant SDK.
+4. Launch your activity with MasterPassButton to start a transaction.
+
+
 #### Web Checkout Fallback
