@@ -129,8 +129,8 @@ public enum ShippingAddressesManager {
                     .locality(dbAddressModel.city)
                     .adminArea(dbAddressModel.state)
                     .postalCode(dbAddressModel.postcode)
-                    .setCountryName(dbAddressModel.countryName)
-                    .setPhone(dbAddressModel.phone)
+                    .countryName(dbAddressModel.countryName)
+                    .phone(dbAddressModel.phone)
                     .build();
 
             return address;
