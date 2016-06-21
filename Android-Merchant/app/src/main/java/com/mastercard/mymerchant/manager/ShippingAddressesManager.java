@@ -121,7 +121,7 @@ public enum ShippingAddressesManager {
         }
 
         try {
-            return new MasterPassAddress.Builder(Locale.US)
+            MasterPassAddress address = new MasterPassAddress.Builder(Locale.US)
                     .firstName(dbAddressModel.firstName)
                     .lastName(dbAddressModel.lastName)
                     .addressLine(0, dbAddressModel.addressLine1)
@@ -129,7 +129,12 @@ public enum ShippingAddressesManager {
                     .locality(dbAddressModel.city)
                     .adminArea(dbAddressModel.state)
                     .postalCode(dbAddressModel.postcode)
+                    .setCountryName(dbAddressModel.countryName)
+                    .setPhone(dbAddressModel.phone)
                     .build();
+
+            return address;
+
         } catch (MasterPassException ex) {
             Log.e(TAG, "Unable to build MasterPassAddress object from database entry (DbAddressModel). "
                     + ex.getMessage());
@@ -150,6 +155,8 @@ public enum ShippingAddressesManager {
         dbAddressModel.city = masterPassAddress.getLocality();
         dbAddressModel.state = masterPassAddress.getAdminArea();
         dbAddressModel.postcode = masterPassAddress.getPostalCode();
+        dbAddressModel.phone = masterPassAddress.getPhone();
+        dbAddressModel.countryName = masterPassAddress.getCountryName();
         dbAddressModel.masterPassId = masterPassAddress.getId();
 
         return dbAddressModel;

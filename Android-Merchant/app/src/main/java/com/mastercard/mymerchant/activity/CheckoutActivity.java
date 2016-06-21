@@ -25,6 +25,7 @@ package com.mastercard.mymerchant.activity;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -36,12 +37,10 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.android.volley.Request;
 import com.android.volley.VolleyError;
-import com.mastercard.masterpass.mc.core.network.VolleyWebServiceManager;
-import com.mastercard.masterpass.mc.core.network.WebServiceManagerCallback;
-import com.mastercard.masterpass.merchant.DecryptionCallback;
-import com.mastercard.masterpass.merchant.DecryptionListener;
+import com.mastercard.masterpass.merchant.MasterPassButtonListener;
+import com.mastercard.masterpass.merchant.UriCallback;
+import com.mastercard.masterpass.merchant.WebUrlCallback;
 import com.mastercard.mymerchant.DataManager;
 import com.mastercard.mymerchant.R;
 import com.mastercard.mymerchant.adapter.BasketAdapter;
@@ -251,34 +250,29 @@ public class CheckoutActivity extends Activity
                 // Clear any old chosen addresses before transaction
                 ShippingAddressesManager.INSTANCE.clearAddressChosenForTransaction();
 
-                // Build transaction details object
-                TransactionDetails transactionDetails = new TransactionDetails();
-                transactionDetails.setIsShippingRequired(mDataManager.mBasket.doesBasketRequireShipping());
-                transactionDetails.setAmountData(
-                        new AmountData(
-                                mDataManager.mBasket.getSubTotal(),
-                                0,
-                                mDataManager.mBasket.getSubTotal(),
-                                Currency.getInstance(Locale.US)));
-
                 // Get MasterPass Button from MCO SDK
                 MasterPassButton mBuyWithMasterPassButton;
                 if (mDataManager.mBasket.doesBasketRequireShipping()) {
-                    mBuyWithMasterPassButton = MasterPass.getInstance()
-                            .getMasterPassButton(
-                                    transactionDetails,
-                                    new WebCheckoutCallback(),
-                                    new PaymentConfirmationIntegration(this),
-                                    mTransactionResultListener,
-                                    new AddressDecryptionListener(CheckoutActivity.this));
+                    mBuyWithMasterPassButton = MasterPass.getInstance().getMasterPassButton(
+                        masterPassButtonListener,
+                        new WebUrlCallback() {
+                            @Override
+                            public void getAppToWebUrl(UriCallback uriCallback) {
+                                uriCallback.completedWithUri(Uri.parse("url_to_web_checkout_link"));
+                            }
+                        },
+                        new PaymentConfirmationIntegration(this),
+                        mTransactionResultListener,
+                        new AddressDecryptionListener(CheckoutActivity.this)
+                    );
                 } else {
-                    mBuyWithMasterPassButton = MasterPass.getInstance()
-                            .getMasterPassButton(
-                                    transactionDetails,
-                                    new WebCheckoutCallback(),
-                                    new PaymentConfirmationIntegration(this),
-                                    mTransactionResultListener,
-                                    null);
+                    mBuyWithMasterPassButton = MasterPass.getInstance().getMasterPassButton(
+                        masterPassButtonListener,
+                        new WebCheckoutCallback(),
+                        new PaymentConfirmationIntegration(this),
+                        mTransactionResultListener,
+                        null
+                    );
                 }
 
                 if (mBuyWithMasterPassButton != null) {
@@ -320,6 +314,26 @@ public class CheckoutActivity extends Activity
 
         Log.d(TAG, "Init MCO Checkout method end");
     }
+
+    private final MasterPassButtonListener masterPassButtonListener = new MasterPassButtonListener() {
+        @Override
+        public TransactionDetails getTransactionDetails() {
+            // Build transaction details object
+            TransactionDetails transactionDetails = new TransactionDetails();
+            transactionDetails.setIsShippingRequired(mDataManager.mBasket.doesBasketRequireShipping());
+            try {
+                transactionDetails.setAmountData( new AmountData(
+                        mDataManager.mBasket.getSubTotal(),
+                        0,
+                        mDataManager.mBasket.getSubTotal(),
+                        Currency.getInstance(Locale.US)));
+            } catch (MasterPassException e) {
+                e.printStackTrace();
+            }
+
+            return transactionDetails;
+        }
+    };
 
     /**
      * [MCO-SDK] Transaction result listener passed to MCO.

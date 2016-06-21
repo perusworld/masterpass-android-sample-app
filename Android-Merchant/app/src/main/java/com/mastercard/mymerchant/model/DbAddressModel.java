@@ -56,6 +56,12 @@ public class DbAddressModel extends Model {
     @Column(name = "IsDefault")
     public boolean isDefault;
 
+    @Column(name = "Phone")
+    public String phone;
+
+    @Column(name = "CountryName")
+    public String countryName;
+
     @Column(name = "MasterPassId")
     public String masterPassId;
 

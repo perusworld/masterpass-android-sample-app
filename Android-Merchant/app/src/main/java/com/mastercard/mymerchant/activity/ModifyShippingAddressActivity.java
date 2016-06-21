@@ -158,6 +158,8 @@ public class ModifyShippingAddressActivity extends Activity {
         mAddress.state = mState.getText().toString().toUpperCase();
         mAddress.postcode = mPostcode.getText().toString();
         mAddress.isDefault = mDefaultSwitch.isChecked();
+        mAddress.countryName = "US";
+        mAddress.phone = ""; // TODO: add a phone number editing field
         mAddress.masterPassId = ShippingAddressesManager.INSTANCE.dbModelToMasterPassAddress(mAddress).getId();
 
         return mAddress;

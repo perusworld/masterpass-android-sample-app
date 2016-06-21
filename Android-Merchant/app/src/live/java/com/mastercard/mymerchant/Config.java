@@ -49,7 +49,7 @@ public class Config {
      */
     public static MasterPassMerchantConfig getMasterPassWalletConfig(Context applicationContext) {
         return new MasterPassMerchantConfig(
-                Locale.US,// Only US is supported in this version of MCO
+                Locale.US,
                 Constants.SUPPORTED_PAYMENT_NETWORKS,
                 PreferencesHelper.INSTANCE.getCryptogramTypeEnum(applicationContext),
                 false,
