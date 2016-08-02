@@ -2,11 +2,17 @@
 
 ## Overview
 
-The MasterPass Merchant Android SDK enables developers to implement secure and native checkout experiences with a Masterpass-enabled Wallet App within their Android applications.
+The Masterpass Merchant Android SDK enables developers to implement secure and native checkout experiences with a Masterpass-enabled Wallet App.
 
-The merchant application submits a MasterPass Payment Request to the Merchant SDK, which then sends the request to a MasterPass-enabled wallet application. Afterwards, the Merchant SDK returns a MasterPass Payment Verifier Token to the merchant application.
+Here is a list of some of the Masterpass-enabled Wallet Apps. 
 
-The tokens should be exchanged with the MasterPass backend to access payment information. 
+* [Masterpass by MasterCard](https://play.google.com/store/apps/details?id=com.mastercard.mp.wallet)
+* [Fifth Third Masterpass](http://mstr.cd/fifththird)
+* [KeyBank Masterpass](http://mstr.cd/keybank)
+
+The merchant application submits a **Masterpass OAuth Token** and **Transaction Details** to the Merchant SDK. The Merchant SDK passes them to a Masterpass-enabled wallet application. After user is successfully authenticated, the Merchant SDK returns a **MasterPass OAuth Verifier** and a **Masterpass Checkout ID** to the merchant application.
+
+The **Masterpass OAuth Verifier** and the **Masterpass Checkout ID** should be exchanged with the MasterPass backend to access secure payment information. 
 
 ## Use Cases
 
@@ -15,9 +21,9 @@ The tokens should be exchanged with the MasterPass backend to access payment inf
 Recognized user with a Masterpass-enabled Wallet App with single card. 
 ![recognized-checkout-flow](https://cloud.githubusercontent.com/assets/3765458/17339657/d43425ae-58ba-11e6-9db7-e1f8300f830d.png)
 
-### No MasterPass-enabled Wallet on user's android phone
+### No MasterPass-enabled Wallet on user's device
 
-Coming soon
+Coming soon..
 
 ## Integration Tutorial
 
