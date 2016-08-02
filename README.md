@@ -2,17 +2,18 @@
 
 ## Overview
 
-The MasterPass Merchant Android SDK enables developers to quickly implement secure and native checkout experiences within Android applications.
+The MasterPass Merchant Android SDK enables developers to implement secure and native checkout experiences with a Masterpass-enabled Wallet App within their Android applications.
 
 The merchant application submits a MasterPass Payment Request to the Merchant SDK, which then sends the request to a MasterPass-enabled wallet application. Afterwards, the Merchant SDK returns a MasterPass Payment Verifier Token to the merchant application.
 
-The tokens should be exchanged with the MasterPass backend to access encrypted payment information. 
+The tokens should be exchanged with the MasterPass backend to access payment information. 
 
 ## Use Cases
 
-### One or more MasterPass-enabled Wallets on user's android phone
+### Checkout with a Masterpass-enabled Wallet App
 
-Coming soon
+Recognized user with a Masterpass-enabled Wallet App with single card. 
+![recognized-checkout-flow](https://cloud.githubusercontent.com/assets/3765458/17339657/d43425ae-58ba-11e6-9db7-e1f8300f830d.png)
 
 ### No MasterPass-enabled Wallet on user's android phone
 
