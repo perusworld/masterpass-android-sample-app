@@ -340,10 +340,10 @@ Please download the companion test wallet app to test your integration.
 
 1. Install the companion Test Wallet Apps on an Android device.
 2. Launch the companion Test Wallet Apps once to initialize it.
-3.  Install your app and launch it to initialize the Merchant SDK.
+3. Install your app and launch it to initialize the Merchant SDK.
 4. Launch your activity with MasterPassButton to start a transaction.
 
 
 #### Web Checkout Fallback
 
-Coming soon
+See the [Test Merchant Server](https://github.com/MasterCard/masterpass-android-sample-app/blob/master/Test-Merchant-Server/README.md#web-checkout) for more details
