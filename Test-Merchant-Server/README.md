@@ -1,5 +1,3 @@
-[toc]
-
 #Test Merchant Server Overview
 
 ## Capabilities of Test Merchant Server
