@@ -29,7 +29,7 @@ Coming soon..
 
 ### 1. Set up your backend to communicate with MasterPass
 
-Coming soon
+See the [Test Merchant Server](https://github.com/MasterCard/masterpass-android-sample-app/tree/master/Test-Merchant-Server) for more informaiton
 
 ### 2. Add the Android Checkout SDK to your application
 
