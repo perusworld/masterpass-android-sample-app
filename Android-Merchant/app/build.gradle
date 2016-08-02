@@ -75,10 +75,10 @@ repositories {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
-    liveCompile(name: 'masterpass-core-release-1.2.0.6', ext: 'aar')
-    liveCompile(name: 'masterpass-merchant-release-1.2.0.6', ext: 'aar')
-    liveCompile(name: 'mobile-checkout-core-lib-release-1.2.0.6', ext: 'aar')
-    liveCompile(name: 'mobile-checkout-merchant-lib-release-1.2.0.6', ext: 'aar')
+    liveCompile(name: 'masterpass-core-debug-1.3.0.0', ext: 'aar')
+    liveCompile(name: 'masterpass-merchant-debug-1.3.0.0', ext: 'aar')
+    liveCompile(name: 'mobile-checkout-core-lib-debug-1.3.0.0', ext: 'aar')
+    liveCompile(name: 'mobile-checkout-merchant-lib-debug-1.3.0.0', ext: 'aar')
 
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.google.code.gson:gson:2.3'
