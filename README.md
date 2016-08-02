@@ -19,7 +19,7 @@ The **Masterpass OAuth Verifier** and the **Masterpass Checkout ID** should be e
 ### Checkout with a Masterpass-enabled Wallet App
 
 Recognized user with a Masterpass-enabled Wallet App with single card. 
-![recognized-checkout-flow](https://cloud.githubusercontent.com/assets/3765458/17339657/d43425ae-58ba-11e6-9db7-e1f8300f830d.png)
+![recognized-checkout-flow](https://cloud.githubusercontent.com/assets/3765458/17342110/a127b97c-58c5-11e6-8fc7-9c5a0aae3591.png)
 
 ### No MasterPass-enabled Wallet on user's device
 
