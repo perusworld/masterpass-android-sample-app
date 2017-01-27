@@ -87,8 +87,6 @@ public class StartActivity extends Activity {
                     McoInitializer mcoInitializer = new McoInitializer();
                     // Initialize with app context so it is consistent throughout the app
                     mcoInitializer.initLiveMCO(getApplicationContext());
-
-                    Log.d(TAG, "MCO SDK successfully initialized in background thread.");
                 } catch (MasterPassException masterPassException) {
                     return masterPassException;
                 }
@@ -106,7 +104,6 @@ public class StartActivity extends Activity {
                     Log.e(TAG, "Unable to initialize MCO - " + masterPassException.getMessage());
                     masterPassException.printStackTrace();
                 }
-                DataManager.getInstance().setMcoInitialized(true);
             }
         }.execute();
     }

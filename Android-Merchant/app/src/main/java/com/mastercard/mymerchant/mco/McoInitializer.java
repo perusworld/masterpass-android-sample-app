@@ -92,6 +92,7 @@ public class McoInitializer {
                         Log.d(TAG, "Signature: " + response.sessionSignature);
                         // Attempt to initialize the MCO SDK.
                         try {
+                            Log.d(TAG, "MCO SDK started to init in background thread.");
                             MasterPass.getInstance().init(
                                     applicationContext,
                                     masterPassMerchantConfig,
@@ -120,6 +121,8 @@ public class McoInitializer {
         @Override
         public void paymentMethodAvailable() {
             Log.i(TAG, "There is at least one MasterPass Available wallet on the device");
+            DataManager.getInstance().setMcoInitialized(true);
+            Toast.makeText(applicationContext, "MCO initialization success and found at least one wallet.", Toast.LENGTH_SHORT).show();
         }
     };
 

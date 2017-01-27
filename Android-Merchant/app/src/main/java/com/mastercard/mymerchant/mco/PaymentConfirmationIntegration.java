@@ -24,6 +24,7 @@ package com.mastercard.mymerchant.mco;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.util.Base64;
 import android.util.Log;
 
 import com.android.volley.VolleyError;
@@ -52,6 +53,7 @@ import com.mastercard.masterpass.merchant.ShippingMethod;
 import com.mastercard.mymerchant.util.CurrencyUtils;
 import com.mastercard.mymerchant.util.PreferencesHelper;
 
+import java.security.SecureRandom;
 import java.util.List;
 
 /**
@@ -167,8 +169,11 @@ public class PaymentConfirmationIntegration implements PaymentConfirmationCallba
                         }
                         Log.d(TAG, "Requesting cryptogram: " + option.getAcceptanceType());
                         DSRPOptions dsrpOptions = new DSRPOptions(option);
+                        // prepare UN
+                        SecureRandom secureRandom = new SecureRandom();
+                        String un = Base64.encodeToString(secureRandom.generateSeed(4), Base64.NO_WRAP);
                         // Set DSRP object
-                        DSRP dsrp = new DSRP(dsrpOptions, null);// Empty UN, so Switch will generate one
+                        DSRP dsrp = new DSRP(dsrpOptions, un);
                         merchantInitRequest.setExtensionPoint(new ExtensionPointMerchantInitialization(dsrp));
                         // Make a call to Merchant Server
                         DataManager.getInstance().getNetworkManager().makeApiCall(RestMethod.POST,
