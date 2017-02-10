@@ -45,6 +45,20 @@ The generated war file will be in the target folder
 	set MAVEN_OPTS=-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
 	mvn -Djetty.http.port=3000 jetty:run
 
+## Deploy to Heroku (needs Heroku CLI)
+
+Create an app on Heroku
+
+	heroku create mymerch
+	
+Deploy the war on Heroku
+
+	mvn clean heroku:deploy-war -Dheroku.appName=mymerch
+
+Check the server logs
+
+	heroku logs --app mymerch
+
 # API Reference
 
 ## Access Token Service
