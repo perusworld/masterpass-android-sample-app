@@ -40,6 +40,11 @@ The generated war file will be in the target folder
 
 	Test-Merchant-Server/target
 
+## Run Locally Using Jetty
+
+	set MAVEN_OPTS=-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000
+	mvn -Djetty.http.port=3000 jetty:run
+
 # API Reference
 
 ## Access Token Service
