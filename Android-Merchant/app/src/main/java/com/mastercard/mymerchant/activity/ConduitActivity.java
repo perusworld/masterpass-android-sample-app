@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -57,11 +58,13 @@ public class ConduitActivity extends Activity {
     private long tax;
     private long total;
     private Currency currency;
+    protected TextView txtStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conduit);
+        txtStatus = (TextView) findViewById(R.id.txtStatus);
         Intent intent = getIntent();
         String action = intent.getAction();
         Uri data = intent.getData();
@@ -128,16 +131,19 @@ public class ConduitActivity extends Activity {
         }
     };
 
-    protected void showDialog(String msg) {
-        DialogHelper.closeDialog();
+    protected void showDialog(String msg, boolean close) {
+        if (close) {
+            DialogHelper.closeDialog();
+        }
         DialogHelper.showProgressDialog(ConduitActivity.this, msg);
+        txtStatus.setText(msg);
     }
 
     protected void sendClickEvent() {
         if (sendClickEvent) {
             sendClickEvent = false;
             if (dataManager.isMcoInitialized() && null != btnMasterpass) {
-                showDialog("Processing Payment ...");
+                showDialog("Processing Payment ...", true);
                 new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -347,11 +353,8 @@ public class ConduitActivity extends Activity {
         @Override
         public void transactionInitiated() {
             Log.d(TAG, "TransactionResultListener: transactionInitiated");
-            // Close any old dialogs
-            DialogHelper.closeDialog();
+            showDialog("Completing Payment", true);
 
-            // Show a progress dialog which will become visible when the MCO activity closes itself
-            DialogHelper.showProgressDialog(ConduitActivity.this, "Completing Payment");
         }
 
         /**
@@ -481,8 +484,9 @@ public class ConduitActivity extends Activity {
                     @Override
                     public void onResponse(PostbackResponse response) {
                         if (response.isSuccess) {
+                            showDialog("Payment Success", true);
                             // After min number of seconds, proceed to Complete Page
-                            //proceedToCompleteActivity(DIALOG_DELAY_MILLIS - startMillis, checkoutResourceResponse);
+                            proceedToCompleteActivity(DIALOG_DELAY_MILLIS - startMillis, checkoutResourceResponse);
                         } else {
                             DialogHelper.showDialog(ConduitActivity.this, "Completing Failed",
                                     "Could not complete transaction. Postback failed."
@@ -491,6 +495,8 @@ public class ConduitActivity extends Activity {
                     }
                 }
         );
+    }
+    private void proceedToCompleteActivity(long delay, final CheckoutResourceResponse checkoutResourceResponse) {
     }
 
 }
