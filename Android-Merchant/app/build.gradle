@@ -52,7 +52,8 @@ android {
             applicationId 'com.mastercard.mymerchant.live'
             versionName version + '-live'
             //buildConfigField "String", "MERCHANT_SERVER_URL", "\"http://<host>:<port>/Test-Merchant-Server-1.2/\""
-            buildConfigField "String", "MERCHANT_SERVER_URL", "\"https://secure-depths-57908.herokuapp.com/\""
+            //buildConfigField "String", "MERCHANT_SERVER_URL", "\"https://secure-depths-57908.herokuapp.com/\""
+            buildConfigField "String", "MERCHANT_SERVER_URL", "\"https://mymerch.herokuapp.com/\""
             buildConfigField "String", "APP_ID_FOR_SWITCH", "\"b08902f1-4e80-433c-b66f-61a71d646379\""
             //sandbox
         }
@@ -100,7 +101,7 @@ dependencies {
     compile 'com.android.support:design:23.0.0'
     compile 'com.android.support:appcompat-v7:23.0.0'
     compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
-    compile 'com.android.support.constraint:constraint-layout:+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     testCompile 'org.mockito:mockito-core:1.9.5'
     testCompile 'org.easymock:easymock:3.1'

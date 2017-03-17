@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~  ****************************************************************************
   ~  Copyright (c) 2015, MasterCard International Incorporated and/or its
   ~  affiliates. All rights reserved.
@@ -126,4 +125,5 @@
     <string name="complete_lbl_postal_code">Postal Code:</string>
     <string name="complete_lbl_city">City:</string>
     <string name="complete_lbl_state">State:</string>
+    <string name="title_activity_conduit">ConduitActivity</string>
 </resources>

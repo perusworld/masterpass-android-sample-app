@@ -31,7 +31,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mastercard.mymerchant.BuildConfig;
-import com.mastercard.mymerchant.Config;
 import com.mastercard.mymerchant.DataManager;
 import com.mastercard.mymerchant.R;
 import com.mastercard.mymerchant.mco.McoInitializer;
@@ -86,7 +85,7 @@ public class StartActivity extends Activity {
                 try {
                     McoInitializer mcoInitializer = new McoInitializer();
                     // Initialize with app context so it is consistent throughout the app
-                    mcoInitializer.initLiveMCO(getApplicationContext());
+                    mcoInitializer.initLiveMCO(getApplicationContext(), null);
                 } catch (MasterPassException masterPassException) {
                     return masterPassException;
                 }

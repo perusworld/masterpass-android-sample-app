@@ -60,10 +60,11 @@ public class McoInitializer {
     /**
      * Method that create config object and initialize MCO-SDK library live version
      *
-     * @param applicationContext app context
+     * @param applicationContext      app context
+     * @param mInitializationListener
      * @throws MasterPassException
      */
-    public void initLiveMCO(final Context applicationContext) throws MasterPassException {
+    public void initLiveMCO(final Context applicationContext, final InitializationListener mInitializationListener) throws MasterPassException {
         Log.d(TAG, "initLiveMCO");
         this.applicationContext = applicationContext;
         // Create MasterPass Merchant Config
@@ -97,7 +98,7 @@ public class McoInitializer {
                                     applicationContext,
                                     masterPassMerchantConfig,
                                     convertResponse(response),
-                                    mInitializationListener);
+                                    null == mInitializationListener ? McoInitializer.this.mInitializationListener : mInitializationListener);
                         } catch (MasterPassException e) {
                             e.printStackTrace();
                         }
