@@ -12,7 +12,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.mastercard.masterpass.core.MasterPassException;
 import com.mastercard.masterpass.merchant.AmountData;
 import com.mastercard.masterpass.merchant.AuthorizationResponse;
@@ -43,7 +49,9 @@ import com.mastercard.mymerchant.network.api.response.PostbackResponse;
 
 import java.util.Currency;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class ConduitActivity extends Activity {
 
@@ -54,16 +62,22 @@ public class ConduitActivity extends Activity {
     private final DataManager dataManager = DataManager.getInstance();
     private boolean sendClickEvent = false;
     private Uri intentData;
+    private String callbackUrl;
+    private String nonce;
     private long estimatedTotal;
     private long tax;
     private long total;
     private Currency currency;
     protected TextView txtStatus;
+    RequestQueue requestQueue = null;
+    protected boolean doneRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conduit);
+        doneRequest = false;
+        requestQueue = Volley.newRequestQueue(this);
         txtStatus = (TextView) findViewById(R.id.txtStatus);
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -71,9 +85,11 @@ public class ConduitActivity extends Activity {
         this.intentData = data;
         Log.d(TAG, action);
         Log.d(TAG, data.toString());
-        estimatedTotal = new Double(79.12 * 100).longValue();
-        tax = new Double(79.12 * 100).longValue();
-        total = new Double(79.12 * 100).longValue();
+        callbackUrl = data.getQueryParameter("callback");
+        Log.d(TAG, callbackUrl);
+        nonce = data.getQueryParameter("nonce");
+        total = estimatedTotal = new Double(Double.parseDouble(data.getQueryParameter("total")) * 100).longValue();
+        tax = new Double(Double.parseDouble(data.getQueryParameter("tax")) * 100).longValue();
         currency = Currency.getInstance(Locale.US);
         if (dataManager.isMcoInitialized()) {
             initMCOCheckout(false);
@@ -160,11 +176,9 @@ public class ConduitActivity extends Activity {
     protected void onStart() {
         super.onStart();
         sendClickEvent();
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
+        if (doneRequest) {
+            returnToProducts(false);
+        }
     }
 
     @Override
@@ -434,7 +448,7 @@ public class ConduitActivity extends Activity {
 
                                         // Make a postback call to finalize transaction with Switch and Merchant Server
                                         performPostback("USD",
-                                                String.format("%d", Math.round(total * 100)),
+                                                String.format("%d", Math.round(total)),
                                                 StringHelper.formatToXMLDate(purchaseDate),
                                                 TransactionStatus.Success,
                                                 startMillis,
@@ -485,8 +499,7 @@ public class ConduitActivity extends Activity {
                     public void onResponse(PostbackResponse response) {
                         if (response.isSuccess) {
                             showDialog("Payment Success", true);
-                            // After min number of seconds, proceed to Complete Page
-                            proceedToCompleteActivity(DIALOG_DELAY_MILLIS - startMillis, checkoutResourceResponse);
+                            sendPaymentStatus(DIALOG_DELAY_MILLIS - startMillis, checkoutResourceResponse);
                         } else {
                             DialogHelper.showDialog(ConduitActivity.this, "Completing Failed",
                                     "Could not complete transaction. Postback failed."
@@ -496,7 +509,62 @@ public class ConduitActivity extends Activity {
                 }
         );
     }
-    private void proceedToCompleteActivity(long delay, final CheckoutResourceResponse checkoutResourceResponse) {
+
+    private void sendPaymentStatus(final long delay, final CheckoutResourceResponse checkoutResourceResponse) {
+        StringRequest req = new StringRequest(Request.Method.POST, callbackUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.v(TAG, response);
+                proceedToCompleteActivity(delay, checkoutResourceResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("nonce", nonce);
+                params.put("mpstatus", "success");
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Content-Type", "application/x-www-form-urlencoded");
+                return params;
+            }
+        };
+        requestQueue.add(req);
     }
 
+    private void proceedToCompleteActivity(long delay, final CheckoutResourceResponse checkoutResourceResponse) {
+        if (delay < 100) {
+            delay = 100;
+        }
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb-messenger://threads"));
+                startActivity(intent);
+                // Close last instantiated progress dialog
+                DialogHelper.closeProgressDialog();
+                doneRequest = true;
+            }
+        }, delay);
+    }
+
+    private void returnToProducts(final boolean isSlideFromRight) {
+        Intent intent = new Intent(ConduitActivity.this, ProductsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+        if (isSlideFromRight) {
+            overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+        } else {
+            overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
+        }
+    }
 }
