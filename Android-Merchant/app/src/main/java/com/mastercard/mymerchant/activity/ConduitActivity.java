@@ -63,6 +63,7 @@ public class ConduitActivity extends Activity {
     private boolean sendClickEvent = false;
     private Uri intentData;
     private String callbackUrl;
+    private String returnUrl;
     private String nonce;
     private long estimatedTotal;
     private long tax;
@@ -87,6 +88,8 @@ public class ConduitActivity extends Activity {
         Log.d(TAG, data.toString());
         callbackUrl = data.getQueryParameter("callback");
         Log.d(TAG, callbackUrl);
+        returnUrl = data.getQueryParameter("ret");
+        Log.d(TAG, returnUrl);
         nonce = data.getQueryParameter("nonce");
         total = estimatedTotal = new Double(Double.parseDouble(data.getQueryParameter("total")) * 100).longValue();
         tax = new Double(Double.parseDouble(data.getQueryParameter("tax")) * 100).longValue();
@@ -547,7 +550,7 @@ public class ConduitActivity extends Activity {
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb-messenger://threads"));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(returnUrl));
                 startActivity(intent);
                 // Close last instantiated progress dialog
                 DialogHelper.closeProgressDialog();
